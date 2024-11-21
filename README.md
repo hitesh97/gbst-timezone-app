@@ -1,45 +1,30 @@
-# Getting Started with Create React App
+# GBST coding challange solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), to solve the coding challange provided [GBST]("./Take Home Challenge - React.docx")
 
-## Available Scripts
+## Steps to run the project:
 
-In the project directory, you can run:
+1. first clone the proejct from the repository
+2. run `npm run install` to install required depnedencies
+3. Run `npm run start` to start the project in developopment mode
 
-### `npm start`
+# I have used [Tailwind CSS](https://tailwindcss.com/) to style the components as its one of the most widely used and utility first class based CSS framework which allows to style the components using class names.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tailwind css makes it excellent choice for responsive design of the components and application as it comes with variety of utility classes and themeing support!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Home page lists the time-zones in a responsive grid layout with each time-zone as a Card component.
 
-### `npm test`
+## Each card has two actions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Click on the `Show time in a Dialog` opens a modal with the time-zone's current time
 
-### `npm run build`
+### 2. Click on the `Show zone details link` Navigates to the timezone's details page, this deails page has everything it need to re-create the state of the page and does not depend on the parent component.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### I tried to use the [Get time-zone endpoint](https://timeapi.io/docs) to fetch the time-zone's current time, but it was not working as it needs a Longitude / lattitude information which is not availeble from previous API call!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# However, the application meets ALL the requirements of the challange.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
+## Learn More about Create React App
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
