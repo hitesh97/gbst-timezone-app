@@ -14,6 +14,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Home page lists the time-zones in a responsive grid layout with each time-zone as a Card component.
 
+## I have hard coded my API Key for Time-zone api in `fetchTimezones` method on `Homepage.tsx` file for simplicity.
+
 ## Each card has two actions
 
 ### 1. Click on the `Show time in a Dialog` opens a modal with the time-zone's current time
