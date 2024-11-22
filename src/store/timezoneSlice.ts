@@ -1,31 +1,53 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 interface TimezoneState {
-  selectedTimezones: string[];
+  visitedTimezones: Record<string, string[]>; // { userId: [zoneName1, zoneName2, ...] }
 }
 
-const initialState: TimezoneState = {
-  selectedTimezones: JSON.parse(
-    localStorage.getItem("selectedTimezones") || "[]"
-  ),
+// Helper function to load state from localStorage
+const loadFromLocalStorage = (): TimezoneState => {
+  const storedState = localStorage.getItem("timezoneState");
+  if (storedState) {
+    return JSON.parse(storedState);
+  }
+  return {
+    visitedTimezones: {},
+  };
 };
 
-const timezonesSlice = createSlice({
-  name: "timezones",
+// Helper function to save state to localStorage
+const saveToLocalStorage = (state: TimezoneState) => {
+  localStorage.setItem("timezoneState", JSON.stringify(state));
+};
+
+const initialState: TimezoneState = loadFromLocalStorage();
+
+const timezoneSlice = createSlice({
+  name: "timezone",
   initialState,
   reducers: {
-    addTimezone(state, action: PayloadAction<string>) {
-      //assuming: we do not want duplicate timezones in the list
-      if (!state.selectedTimezones.includes(action.payload)) {
-        state.selectedTimezones.push(action.payload);
-        localStorage.setItem(
-          "selectedTimezones",
-          JSON.stringify(state.selectedTimezones)
-        );
+    visitTimezone: (
+      state,
+      action: PayloadAction<{ userId: string; timezone: string }>
+    ) => {
+      const { userId, timezone } = action.payload;
+      if (!state.visitedTimezones[userId]) {
+        state.visitedTimezones[userId] = [];
+      }
+      if (!state.visitedTimezones[userId].includes(timezone)) {
+        state.visitedTimezones[userId].push(timezone);
+        saveToLocalStorage(state); // Save changes to localStorage
       }
     },
   },
 });
 
-export const { addTimezone } = timezonesSlice.actions;
-export default timezonesSlice.reducer;
+export const { visitTimezone } = timezoneSlice.actions;
+export default timezoneSlice.reducer;
+
+// Selector to get visited timezones for the current user
+export const selectVisitedTimezones = (
+  state: RootState,
+  userId: string | null
+) => (userId ? state.timezones.visitedTimezones[userId] || [] : []);
