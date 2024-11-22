@@ -24,7 +24,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 #### I tried to use the [Get time-zone endpoint](https://timeapi.io/docs) to fetch the time-zone's current time, but it was not working as it needs a Longitude / lattitude information which is not availeble from previous API call!
 
-# However, the application meets ALL the requirements of the challange.
+# However, the application meets ALL level 3 the requirements of the challange.
 
 ## Learn More about Create React App
 
