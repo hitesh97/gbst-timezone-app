@@ -4,8 +4,12 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import HomePage from "./pages/HomePage";
 import TimezoneDetails from "./pages/TimezoneDetails";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const App: React.FC = () => (
+  <QueryClientProvider client={queryClient}>
   <Provider store={store}>
     <Router>
       <Routes>
@@ -16,7 +20,7 @@ const App: React.FC = () => (
         <Route path="/" element={<HomePage />} />
       </Routes>
     </Router>
-  </Provider>
+  </Provider></QueryClientProvider>
 );
 
 export default App;
